@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Painf</title>
+        <script src="./js/brushes.js" defer="defer"></script>
+        <script src="./js/painf.js" defer="defer"></script>
+        <script src="./js/interface.js" defer="defer"></script>
+        <script src="./js/utils.js" defer="defer"></script>
+        <meta charset="UTF-8" />
+        <link rel="icon" href="favicon.ico" />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+
+    <body>
+        <div class="panel" id="panel">
+            <!--select#brushoption.hidden(value='DashedLine') ---
+                option.hidden(value='Fill') Fill
+                option.hidden(value='Plash') Plash
+                option.hidden(value='Stamp') Stamp-->
+            <label class="icon">
+                <input type="radio" name="brush" value="Select" /><img class="icon" src="./img/cursor.png" /></label>
+            <label class="icon">
+                <input type="radio" name="brush" value="Line" checked="checked" /><img class="icon" src="./img/pencil.png" /></label>
+            <label class="icon">
+                <input type="radio" name="brush" value="TinyLine" /><img class="icon" src="./img/raven.png" /></label>
+            <label class="icon">
+                <input type="radio" name="brush" value="Spyder" /><img class="icon" src="./img/spider.png" /></label>
+            <label class="icon">
+                <input type="radio" name="brush" value="Spray" /><img class="icon" src="./img/spray.png" /></label>
+            <select id="linecap">
+                <option value="round" selected="selected">&#9679;</option>
+                <option value="square">&#9632;</option>
+            </select>
+            <input id="color" type="color" value="#000000" />
+            <input class="hidden" id="smooth" type="checkbox" />
+            <label for="smooth"><img src="./img/footprint.png" /></label>
+            <br/>
+            <label for="width">Жир:</label>
+            <input id="width" type="range" orient="vertical" size="100" value="1" min="1" max="66" step="1" />
+            <br/>
+            <label for="alpha">Прозр:</label>
+            <input id="alpha" type="range" orient="vertical" size="90" value="1" min="0" max="1" step="0.1" />
+            <br/>
+            <label for="iblur">Вода:</label>
+            <input id="iblur" type="range" orient="vertical" size="80" value="0" min="0" max="22" step="1" />
+            <hr/>
+            <button class="icon" onclick="mutables.pop()"><img src="./img/undo.png" /></button>
+            <button class="icon" onclick="showSave()"><img src="./img/save.png" /></button>
+            <button class="icon">
+                <label><img src="./img/add_img.png" />
+                    <input id="iimport" type="file" />
+                </label>
+            </button>
+            <br/>
+            <div class="savelist">
+                <div id="savelist"></div>
+            </div>
+            <hr/>
+            <label for="mspeed">Дезинтегратор:</label>
+            <input id="mspeed" type="range" orient="vertical" size="70" value="1357" min="333" max="7777" step="10" />
+            <br/>
+            <canvas class="hidden" id="stamp"></canvas>
+        </div>
+        <div class="panel hidden" id="savePanel">
+            <input id="filename" />
+            <button onclick="save()">Save</button>
+        </div>
+        <div class="panel hidden" id="selectPanel">
+            <select class="hidden" id="selectedList"></select>
+            <button class="hidden" id="applyselected">Apply</button>
+            <button class="hidden" id="deleteselected">Delete</button>
+            <input id="selectedcolor" type="color" value="#000000" />
+            <br/>
+            <label for="width">Жир:</label>
+            <input id="selectedwidth" type="range" orient="vertical" size="100" value="1" min="1" max="66" step="1" />
+            <br/>
+            <label for="alpha">Прозр:</label>
+            <input id="selectedalpha" type="range" orient="vertical" size="90" value="1" min="0" max="1" step="0.1" />
+            <br/>
+            <label for="iblur">Вода:</label>
+            <input id="selectedblur" type="range" orient="vertical" size="80" value="0" min="0" max="22" step="1" />
+        </div>
+        <canvas id="canvas"></canvas>
+        <canvas id="canvas2"></canvas>
+    </body>
+</html>
